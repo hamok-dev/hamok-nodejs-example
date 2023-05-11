@@ -24,10 +24,11 @@
   "license": "Apache-2.0",
   "dependencies": {
     "@bufbuild/protobuf": "^1.0.0",
-    "@hamok-dev/hamok-js-core": "1.0.1-rc.0",
+    "@hamok-dev/hamok-js-core": "1.0.0-SNAPSHOT.6ce9750b3c9dd94174d431fa0bf3fa1e26d70096",
     "@types/events": "^3.0.0",
     "@types/uuid": "^8.3.4",
     "axios": "^1.2.2",
+    "colors": "^1.4.0",
     "loglevel": "^1.8.0",
     "minimist": "^1.2.7",
     "uuid": "^8.3.2",

@@ -5,6 +5,7 @@ lib/
 keys/
 yarn.lock
 todo.txt
+purgatory/
 
 src/server_1.ts
 src/server_2.ts
