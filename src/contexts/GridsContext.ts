@@ -1,6 +1,6 @@
 import { HamokGrid, HamokGridBuilderConfig } from "@hamok-dev/hamok-js-core";
 import { Router } from "../common/Router";
-import { TestContext } from "../common/types";
+import { TestContext } from "../common/test";
 
 export type GridContext = {
 	grids: HamokGrid[],
@@ -10,11 +10,11 @@ export type GridContext = {
 export async function createGridContext(...configs: Partial<HamokGridBuilderConfig>[]): Promise<TestContext<GridContext>> {
 	
 	const grids = configs.map(config => HamokGrid.builder().withConfig(config).build());
-
+	
 	await Promise.all(
 		grids.map(grid => grid.start())
 	);
-
+	
 	const router = new Router();
 	grids.forEach(grid => router.add(grid));
 	

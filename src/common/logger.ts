@@ -180,7 +180,4 @@ export const setLoggerFactory = (loggerFactory: LoggerFactory) => {
     }
 };
 
-export const getLogLevel = () => {
-    return defaultLevel;
-}
 

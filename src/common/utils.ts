@@ -24,44 +24,15 @@ export function arrayTuppling<T extends any[]>(...arrays: { [K in keyof T]: Arra
 	return result;
 }
 
-export type AssertManyBase<T1, T2 extends T1, R> = (expected?: T1, ...actuals: (T2 | undefined)[]) => R;
-export type AssertMany<T1, T2 extends T1> = AssertManyBase<T1, T2, void>;
-
-export function createMessageAuxAssertEquals<T1, T2 extends T1>(messageSupplier: AssertManyBase<T1, T2, string>): AssertMany<T1, T2> {
-	return (expected, ...actuals) => {
-		if (actuals.length < 1) {
-			if (expected === undefined) return;
-			throw new Error(messageSupplier(expected, ...actuals));
+export function createProvisions(numberOfMaps: number, numberOfItems: number): Map<number, string>[] {
+	const result: Map<number, string>[] = [];
+	for (let i = 0; i < numberOfMaps; ++i) {
+		const map = new Map<number, string>();
+		while (map.size < numberOfItems) {
+			const item = Math.random();
+			map.set(item, `${item}`);
 		}
-		for (const actual of actuals) {
-			if (expected !== actual) {
-				throw new Error(messageSupplier(expected, ...actuals));
-			}
-		}
+		result.push(map);
 	}
-}
-
-export function assertEquals<T1, T2 extends T1>(expected?: T1, ...actuals: (T2 | undefined)[]) {
-	if (actuals.length < 1) {
-		if (expected === undefined) return;
-		throw new Error(`Expected value: ${expected}, Actuals: ${actuals}`);
-	}
-	for (const actual of actuals) {
-		if (expected !== actual) {
-			throw new Error(`Expected value: ${expected}, Actual: ${actual}`);
-		}
-	}
-	
-}
-
-export function assertNotEquals<T1, T2 extends T1>(expected?: T1, ...actuals: (T2 | undefined)[]) {
-	if (actuals.length < 1) {
-		if (expected !== undefined) return;
-		throw new Error(`Expected value: ${expected} NOT equal to actuals: ${actuals}`);
-	}
-	for (const actual of actuals) {
-		if (expected === actual) {
-			throw new Error(`Expected value: ${expected} NOT equal to actuals: ${actuals}`);
-		}
-	}
+	return result;
 }

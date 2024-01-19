@@ -1,6 +1,6 @@
 
 import { createCodec, SeparatedStorage, SeparatedStorageConfig } from "@hamok-dev/hamok-js-core";
-import { TestContext } from "../common/types";
+import { TestContext } from "../common/test";
 import { GridContext } from "./GridsContext";
 
 export type SeparatedStorageContext = GridContext & {
